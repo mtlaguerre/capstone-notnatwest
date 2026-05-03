@@ -12,5 +12,18 @@
 	<div id="root"></div>
 	<script type="module" src="./src/main.jsx"></script>
 </body>
+<script type="text/javascript">
+  (function(w, d, x, id){
+    s=d.createElement('script');
+    s.src='https://mtlaguerredemo.my.connect.aws/connectwidget/static/amazon-connect-chat-interface-client.js';
+    s.async=1;
+    s.id=id;
+    d.getElementsByTagName('head')[0].appendChild(s);
+    w[x] =  w[x] || function() { (w[x].ac = w[x].ac || []).push(arguments) };
+  })(window, document, 'amazon_connect', '25b9731e-c106-4b61-bbb3-1668692cb7c2');
+  amazon_connect('styles', { iconType: 'CHAT_VOICE', openChat: { color: '#ffffff', backgroundColor: '#c8a650' }, closeChat: { color: '#ffffff', backgroundColor: '#c8a650'} });
+  amazon_connect('snippetId', 'QVFJREFIaDRobWZ4TDRrQys5SXJsU0RsT2NjaHpDOEQvN3ZqSEZkQWdhY1I3SUhoUXdGZHA2TVlxcFJwVmFXczRLcjFDbFpjQUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNVnpJRitZZXVKalNYdjhaakFnRVFnQ3ZoSUhENTVQVTNtWms3NDJMc01tVGxCVDFkTzhKM2ttT2h0NTJXaXkwQ2p4NjkxTHlaaEpCVXRJSnU6OlhVNFdtQkRmaVlxc09EcmM4cG1oSERBOGpsWWNnQStpa3RLTVcyWER6dWNndGxrWW04cit5WFhhUjVVeGRZWWl6b0V2aEpHMUFyd1g5aTcxUkVRaitycWR1Y0dyS1JpektoRHRtTEtabEd2dnRGczFLWmlRRWRZelVxV2Ezc2ZyUkZKOG1FdWd1cEZCSm5LdVRncXJIbVJTSE5kTWdJMD0=');
+  amazon_connect('supportedMessagingContentTypes', [ 'text/plain', 'text/markdown', 'application/vnd.amazonaws.connect.message.interactive', 'application/vnd.amazonaws.connect.message.interactive.response' ]);
+</script>
 
 </html>
