@@ -1,0 +1,267 @@
+.accounts {
+  padding: 120px 0;
+  background: linear-gradient(
+    180deg,
+    var(--bg-void) 0%,
+    var(--bg-surface) 100%
+  );
+  position: relative;
+}
+
+.accounts::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-bright),
+    transparent
+  );
+}
+
+.accounts__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Header */
+.accounts__header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 60px;
+}
+
+.accounts__subtitle {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-top: 16px;
+  margin-bottom: 40px;
+}
+
+/* Tabs */
+.accounts__tabs {
+  display: inline-flex;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  gap: 4px;
+}
+
+.accounts__tab {
+  padding: 10px 24px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  border-radius: calc(var(--radius-md) - 2px);
+  transition: all var(--transition);
+}
+
+.accounts__tab--active {
+  background: var(--gold);
+  color: var(--bg-void);
+}
+
+.accounts__tab:not(.accounts__tab--active):hover {
+  color: var(--text-primary);
+  background: var(--gold-dim);
+}
+
+/* Cards */
+.accounts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.acc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.acc-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-bright);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.acc-card--featured {
+  border-color: rgba(180, 148, 80, 0.4);
+  background: linear-gradient(
+    160deg,
+    rgba(180, 148, 80, 0.08) 0%,
+    var(--bg-card) 50%
+  );
+  box-shadow: 0 0 0 1px rgba(180, 148, 80, 0.15), 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+
+.acc-card--featured:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(180, 148, 80, 0.3), 0 40px 80px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(180, 148, 80, 0.08);
+}
+
+.acc-card--featured::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    var(--gold-light),
+    var(--gold),
+    transparent
+  );
+}
+
+.acc-card__ribbon {
+  position: absolute;
+  top: 24px;
+  right: -32px;
+  background: var(--gold);
+  color: var(--bg-void);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 40px;
+  transform: rotate(45deg);
+}
+
+.acc-card__tier {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.acc-card__name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.acc-card__rate-wrap,
+.acc-card__fee-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.acc-card__rate {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+.acc-card__fee {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.acc-card__rate-label,
+.acc-card__fee-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.acc-card__divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+}
+
+.acc-card__perks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.acc-card__perks li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.acc-card__perks svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.acc-card .btn-primary,
+.acc-card .btn-ghost {
+  width: 100%;
+  justify-content: center;
+}
+
+/* FSCS note */
+.accounts__fscs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 48px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.accounts__fscs svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .accounts__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .accounts {
+    padding: 80px 0;
+  }
+  .accounts__inner {
+    padding: 0 20px;
+  }
+  .accounts__grid {
+    grid-template-columns: 1fr;
+  }
+  .acc-card {
+    padding: 28px 24px;
+  }
+}

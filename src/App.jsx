@@ -1,66 +1,44 @@
-import { useState } from "react";
-import Navigation from './Components/Navigation';
-import HeroSection from './Components/HeroSection';
-import AccountsSection from './Components/AccountsSection';
-import LoansSection from './Components/LoansSection';
+import { useState, useEffect } from 'react';
+import Navbar from './Components/Navbar';
+import Hero from './Components/Hero';
+import Accounts from './Components/Accounts';
+import Loans from './Components/Loans';
 import Footer from './Components/Footer';
-import './App.css'
+import OpenAccount from './Components/OpenAccount';
+import './App.css';
 
-function App() {
+export default function App() {
+  const [scrolled, setScrolled] = useState(false);
+  const [page, setPage] = useState('home'); // "home" | "open-account"
 
-	const [modal, setModal] = useState(null);
-		const [toast, setToast] = useState(null);
-		const [activeSection, setActiveSection] = useState("home");
-	
-		const showToast = (msg) => {
-			setToast(msg);
-			setTimeout(() => setToast(null), 3200);
-		};
-	
-		const handleSubmit = (action) => {
-			setModal(null);
-			showToast(`${action} submitted — we'll be in touch shortly.`);
-		};
-	
-		const scrollTo = (id) => {
-			setActiveSection(id);
-			document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-		};
-	
-		return (
-			<>
-				<div className="nnw-root">
-	
-					{/* NAV */}
-					<Navigation activeSection={activeSection} onScrollTo={scrollTo} onSetModal={setModal} />
-	
-					{/* HERO */}
-					<HeroSection onScrollTo={scrollTo} />
-	
-					{/* ACCOUNTS */}
-					<AccountsSection onSetModal={setModal} />
-	
-					{/* LOANS */}
-					<LoansSection onSetModal={setModal} />
-	
-					{/* FOOTER */}
-					<Footer onSetModal={setModal} />
-	
-					{/* MODAL */}
-					{modal && <Modal type={modal} onClose={() => setModal(null)} onSubmit={handleSubmit} />}
-	
-					{/* TOAST */}
-					{toast && (
-						<div className="toast">
-							<span className="toast-dot" />
-							{toast}
-						</div>
-					)}
-	
-				</div>
-				
-			</>
-		);
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const goHome = () => {
+    setPage('home');
+    window.scrollTo({ top: 0 });
+  };
+
+  return (
+    <div className="app">
+      <Navbar
+        scrolled={scrolled}
+        onOpenAccount={() => setPage('open-account')}
+        onHome={goHome}
+      />
+      {page === 'home' ? (
+        <main>
+          <Hero onOpenAccount={() => setPage('open-account')} />
+          <Accounts />
+          <Loans />
+          <Footer />
+        </main>
+      ) : (
+        <OpenAccount onBack={goHome} />
+      )}
+    </div>
+  );
 }
-
-export default App
